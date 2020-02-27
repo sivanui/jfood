@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=Location
+comment0.text=\r\n\ This\ is\ class\ Location.\r\n\r\n\ @author\ Sulaiman\ Ivan\ Achmadi\r\n\ @version\ 27/2/20\r\n
 comment1.params=city\ province\ description
 comment1.target=Location(java.lang.String,\ java.lang.String,\ java.lang.String)
 comment2.params=

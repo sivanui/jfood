@@ -1,11 +1,20 @@
-public class Invoice
+/**
+ * This is class Invoice.
+ *
+ * @author Sulaiman Ivan Achmadi
+ * @version 27/2/20
+ */
+public class Invoice //Create the class Invoice
 {
+  /* Below is used to
+   * declare the variables
+   * of the Invoice
+   */
   private int id;
   private int idFood;
   private String date;
   private int totalPrice;
   private Customer customer;
-
   public Invoice(int id, int idFood, String date, Customer customer, int totalPrice)
   {
       this.id = id;

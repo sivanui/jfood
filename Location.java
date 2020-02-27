@@ -1,5 +1,15 @@
-public class Location
+/**
+ * This is class Location.
+ *
+ * @author Sulaiman Ivan Achmadi
+ * @version 27/2/20
+ */
+public class Location //Create the class Location
 {
+ /* Below is used to
+   * declare the variables
+   * of the Location
+   */
  private String province;
  private String description;
  private String city;

@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=Customer
+comment0.text=\r\n\ This\ is\ class\ Customer.\r\n\r\n\ @author\ Sulaiman\ Ivan\ Achmadi\r\n\ @version\ 27/2/20\r\n
 comment1.params=id\ name\ email\ password\ joinDate
 comment1.target=Customer(int,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
 comment10.params=password
@@ -8,6 +9,7 @@ comment11.params=joinDate
 comment11.target=void\ setJoinDate(java.lang.String)
 comment12.params=
 comment12.target=void\ printData()
+comment12.text=\ Below\ is\ used\ to\r\n\ print\ the\ name\ of\r\n\ the\ Customer\r\n
 comment2.params=
 comment2.target=int\ getId()
 comment3.params=

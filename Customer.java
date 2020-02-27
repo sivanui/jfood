@@ -1,4 +1,10 @@
-public class Customer
+/**
+ * This is class Customer.
+ *
+ * @author Sulaiman Ivan Achmadi
+ * @version 27/2/20
+ */
+public class Customer //Create the class Customer
 {
    private int id;
    private String name;
@@ -54,6 +60,10 @@ public class Customer
    {
        this.joinDate = joinDate;
    }
+   /* Below is used to
+    * print the name of
+    * the Customer
+    */
    public void printData()
    {
        System.out.println(name);

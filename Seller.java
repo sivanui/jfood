@@ -1,5 +1,15 @@
-public class Seller
+/**
+ * This is class Seller.
+ *
+ * @author Sulaiman Ivan Achmadi
+ * @version 27/2/20
+ */
+public class Seller //Create the class Seller
 {
+  /* Below is used to
+   * declare the variables
+   * of the Seller
+   */
   private int id;
   private String name;
   private String email;

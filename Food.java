@@ -1,5 +1,15 @@
-public class Food
+/**
+ * This is class Food.
+ *
+ * @author Sulaiman Ivan Achmadi
+ * @version 27/2/20
+ */
+public class Food //Create the class Food
 {
+  /* Below is used to
+   * declare the variables
+   * of the Food
+   */
   private int id;
   private String name;
   private Seller seller;

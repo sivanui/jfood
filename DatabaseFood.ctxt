@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=DatabaseFood
+comment0.text=\r\n\ This\ is\ class\ DatabaseFood.\r\n\r\n\ @author\ Sulaiman\ Ivan\ Achmadi\r\n\ @version\ 27/2/20\r\n
 comment1.params=
 comment1.target=DatabaseFood()
 comment2.params=food
