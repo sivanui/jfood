@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=DatabaseFood
+comment1.params=
+comment1.target=DatabaseFood()
+comment2.params=food
+comment2.target=boolean\ addFood(Food)
+comment3.params=food
+comment3.target=boolean\ removeFood(Food)
+comment4.params=
+comment4.target=java.lang.String[]\ getlistFood()
+numComments=5
