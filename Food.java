@@ -65,5 +65,6 @@ public class Food //Create the class Food
   }
   public void printData()
   {
+      System.out.println(name);
   }
 }

@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=DatabaseSeller
+comment0.text=\r\n\ This\ is\ class\ DatabaseSeller.\r\n\r\n\ @author\ Sulaiman\ Ivan\ Achmadi\r\n\ @version\ 28/2/20\r\n
+comment1.params=
+comment1.target=DatabaseSeller()
+comment2.params=seller
+comment2.target=boolean\ addSeller(Seller)
+comment3.params=seller
+comment3.target=boolean\ removeSeller(Seller)
+comment4.params=
+comment4.target=Seller\ getSeller()
+comment5.params=
+comment5.target=java.lang.String[]\ getlistSeller()
+numComments=6

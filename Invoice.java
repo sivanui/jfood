@@ -65,5 +65,6 @@ public class Invoice //Create the class Invoice
   }
   public void printData()
   {
+      System.out.println(totalPrice);
   }
 }
