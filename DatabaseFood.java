@@ -10,20 +10,17 @@ public class DatabaseFood //Create the class DatabaseFood
    * declare the variables
    * of the DatabaseFood
    */
- private String[] listFood;
+ private static String[] listFood;
  
- public DatabaseFood()
- {
- }
- public boolean addFood(Food food)
+ public static boolean addFood(Food food)
  {
      return false;
  }
- public boolean removeFood(Food food)
+ public static boolean removeFood(Food food)
  {
      return false;
  }
- public String[] getlistFood()
+ public static String[] getlistFood()
  {
      return listFood;
  }

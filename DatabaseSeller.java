@@ -10,24 +10,20 @@ public class DatabaseSeller //Create the class DatabaseSeller
    * declare the variables
    * of the DatabaseSeller
    */
- private String[] listSeller;
- 
- public DatabaseSeller()
- {
- }
- public boolean addSeller(Seller seller)
+ private static String[] listSeller;
+ public static boolean addSeller(Seller seller)
  {
      return false;
  }
- public boolean removeSeller(Seller seller)
+ public static boolean removeSeller(Seller seller)
  {
      return false;
  }
- public Seller getSeller()
+ public static Seller getSeller()
  {
      return null;
  }
- public String[] getlistSeller()
+ public static String[] getlistSeller()
  {
      return listSeller;
  }

@@ -28,7 +28,7 @@ public class Location //Create the class Location
  {
      return city;
  }
-   public String getDescription()
+ public String getDescription()
  {
      return description;
  }

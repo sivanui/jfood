@@ -7,10 +7,10 @@ public class JFood
     
     Seller seller1 = new Seller
     (1706043052, "Sulaiman Ivan Achmadi", "ivan.achmadi@gmail.com",
-    "+62818970818", location1);
-           
+    "+62818970818", location1);  
+
     Food food1 = new Food
-    (123, "Burger", seller1, 50000, "Makanan");
+    (123, "Burger", seller1, 50000, FoodCategory.RICE);
            
     Customer customer1 = new Customer
     (1706040302, "John Doe", "johndoe@gmail.com", "+62876543210",
