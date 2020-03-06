@@ -15,13 +15,17 @@ public class Invoice //Create the class Invoice
   private String date;
   private int totalPrice;
   private Customer customer;
-  public Invoice(int id, int idFood, String date, Customer customer, int totalPrice)
+  private PaymentType paymentType;
+  private InvoiceStatus status;
+  public Invoice(int id, int idFood, String date, int totalPrice, Customer customer, PaymentType paymentType, InvoiceStatus status)
   {
       this.id = id;
       this.idFood = idFood;
       this.date = date;
       this.totalPrice = totalPrice;
       this.customer = customer;
+      this.paymentType = paymentType;
+      this.status = status;
   }
   public int getId()
   {
@@ -29,7 +33,7 @@ public class Invoice //Create the class Invoice
   }
   public int getIdFood()
   {
-       return idFood;
+     return idFood;
   }
   public String getDate()
   {
@@ -42,6 +46,14 @@ public class Invoice //Create the class Invoice
   public Customer getCustomer()
   {
        return customer;
+  }
+  public PaymentType getPaymentType()
+  {
+      return paymentType;
+  }
+  public InvoiceStatus getInvoiceStatus()
+  {
+      return status;
   }
   public void setId(int id)
   {
@@ -63,8 +75,22 @@ public class Invoice //Create the class Invoice
   {
       this.customer = customer;
   }
+  public void setPaymentType(PaymentType paymentType)
+  {
+      this.paymentType = paymentType;
+  }
+  public void setInvoiceStatus(InvoiceStatus status)
+  {
+      this.status = status;
+  }
   public void printData()
   {
-      System.out.println(totalPrice);
+      System.out.println("=======INVOICE=======");
+      System.out.println("ID: "+id);
+      System.out.println("Food ID: "+idFood);
+      System.out.println("Date: "+date);
+      System.out.println("Customer: "+customer.getName());
+      System.out.println("Total Price: " +totalPrice);
+      System.out.println("Status: "+status);
   }
 }

@@ -9,14 +9,14 @@ public enum PaymentType
     CASHLESS("Cashless"),
     CASH("Cash");
     
-    private String type;
-    private PaymentType(String type)
+    private String paymentType;
+    private PaymentType(String paymentType)
     {
-        this.type = type;
+        this.paymentType = paymentType;
     }
     public String toString()
     {
-        return this.type;
+        return this.paymentType;
     }
 }
         
