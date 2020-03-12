@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=CashlessInvoice
+comment0.text=\r\n\ This\ is\ class\ CashlessInvoice.\r\n\r\n\ @author\ Sulaiman\ Ivan\ Achmadi\r\n\ @version\ 12/3/20\r\n
+comment1.params=id\ food\ date\ customer\ invoiceStatus
+comment1.target=CashlessInvoice(int,\ Food,\ java.lang.String,\ Customer,\ InvoiceStatus)
+comment2.params=id\ food\ date\ customer\ invoiceStatus\ promo
+comment2.target=CashlessInvoice(int,\ Food,\ java.lang.String,\ Customer,\ InvoiceStatus,\ Promo)
+comment3.params=
+comment3.target=PaymentType\ getPaymentType()
+comment4.params=
+comment4.target=Promo\ getPromo()
+comment5.params=promo
+comment5.target=void\ setPromo(Promo)
+comment6.params=
+comment6.target=void\ setTotalPrice()
+comment7.params=
+comment7.target=void\ printData()
+numComments=8

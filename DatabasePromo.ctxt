@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=DatabasePromo
+comment0.text=\r\n\ This\ is\ class\ DatabasePromo.\r\n\r\n\ @author\ Sulaiman\ Ivan\ Achmadi\r\n\ @version\ 12/3/20\r\n
+comment1.params=promo
+comment1.target=boolean\ addPromo(Promo)
+comment2.params=promo
+comment2.target=boolean\ removePromo(Promo)
+comment3.params=
+comment3.target=Promo\ getPromo()
+comment4.params=
+comment4.target=java.lang.String[]\ getListPromo()
+numComments=5

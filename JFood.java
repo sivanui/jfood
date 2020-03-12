@@ -16,14 +16,14 @@ public class JFood
    (1706040302, "John Doe", "johndoe@gmail.com", "+62876543210",
    "01-01-2020");
  
-   Invoice invoice1 = new Invoice
-   (001, 123, "02-02-2020", 50000, customer1, PaymentType.CASH,
-   InvoiceStatus.FINISHED);
+   // Invoice invoice1 = new Invoice
+   // (001, 123, "02-02-2020", 50000, customer1, PaymentType.CASH,
+   // InvoiceStatus.FINISHED);
     
    System.out.println(seller1.getName());
    seller1.setName("Fadel");
    System.out.println(seller1.getName());
    food1.printData();
-   invoice1.printData();
+   // invoice1.printData();
   }
 }
