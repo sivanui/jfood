@@ -39,7 +39,9 @@ public class CashlessInvoice extends Invoice
  }
  public void setTotalPrice()
  {
-     if(getPromo().getActive() == true &&
+     if(
+     promo != null &&
+     getPromo().getActive() == true &&
      getFood().getPrice() > getPromo().getMinPrice())
      {
          this.totalPrice = getFood().getPrice()-getPromo().getDiscount();
@@ -51,14 +53,16 @@ public class CashlessInvoice extends Invoice
  }
  public void printData()
  {
-     if(getPromo().getActive() == true &&
+     if(
+     promo != null &&
+     getPromo().getActive() == true &&
      getFood().getPrice() > getPromo().getMinPrice())
      {
          System.out.println("=======INVOICE=======");
          System.out.println("ID: "+getId());
-         System.out.println("Food: "+getFood());
+         System.out.println("Food: "+getFood().getName());
          System.out.println("Date: "+getDate());
-         System.out.println("Customer: "+getCustomer());
+         System.out.println("Customer: "+getCustomer().getName());
          System.out.println("Total Price: " +totalPrice);
          System.out.println("Status: "+getInvoiceStatus());
          System.out.println("Payment Type: "+PAYMENT_TYPE);
@@ -68,9 +72,9 @@ public class CashlessInvoice extends Invoice
      {
          System.out.println("=======INVOICE=======");
          System.out.println("ID: "+getId());
-         System.out.println("Food: "+getFood());
+         System.out.println("Food: "+getFood().getName());
          System.out.println("Date: "+getDate());
-         System.out.println("Customer: "+getCustomer());
+         System.out.println("Customer: "+getCustomer().getName());
          System.out.println("Total Price: " +totalPrice);
          System.out.println("Status: "+getInvoiceStatus());
          System.out.println("Payment Type: "+PAYMENT_TYPE);

@@ -10,20 +10,39 @@ public class JFood
    "+62818970818", location1);  
 
    Food food1 = new Food
-   (123, "Burger", seller1, 50000, FoodCategory.RICE);
+   (123, "Burger", seller1, 50000, FoodCategory.WESTERN);
+   
+   Food food2 = new Food
+   (234, "Hot Dog", seller1, 10000, FoodCategory.WESTERN);
            
    Customer customer1 = new Customer
    (1706040302, "John Doe", "johndoe@gmail.com", "+62876543210",
    "01-01-2020");
  
-   // Invoice invoice1 = new Invoice
-   // (001, 123, "02-02-2020", 50000, customer1, PaymentType.CASH,
-   // InvoiceStatus.FINISHED);
+   Promo promo1 = new Promo
+   (100, "ABCDE", 10000, 30000, true);
+   
+   CashlessInvoice cashlessinvoice1 = new CashlessInvoice
+   (001, food1, "02-02-2020", customer1, InvoiceStatus.ONGOING);
+   
+   CashlessInvoice cashlessinvoice2 = new CashlessInvoice
+   (002, food1, "20-02-2020", customer1, InvoiceStatus.ONGOING,
+   promo1);
+   
+   CashlessInvoice cashlessinvoice3 = new CashlessInvoice
+   (003, food2, "22-02-2020", customer1, InvoiceStatus.ONGOING,
+   promo1);
     
-   System.out.println(seller1.getName());
-   seller1.setName("Fadel");
-   System.out.println(seller1.getName());
-   food1.printData();
-   // invoice1.printData();
+   //System.out.println(seller1.getName());
+   //seller1.setName("Fadel");
+   //System.out.println(seller1.getName());
+   //food1.printData();
+   //food2.printData()
+   cashlessinvoice1.setTotalPrice();
+   cashlessinvoice2.setTotalPrice();
+   cashlessinvoice3.setTotalPrice();
+   cashlessinvoice1.printData();
+   cashlessinvoice2.printData();
+   cashlessinvoice3.printData();
   }
 }
