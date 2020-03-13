@@ -32,7 +32,15 @@ public class JFood
    CashlessInvoice cashlessinvoice3 = new CashlessInvoice
    (003, food2, "22-02-2020", customer1, InvoiceStatus.ONGOING,
    promo1);
-    
+   
+   CashInvoice cashinvoice1 = new CashInvoice
+   (004, food1, "23-02-2020", customer1, InvoiceStatus.FINISHED);
+   
+   CashInvoice cashinvoice2 = new CashInvoice
+   (005, food1, "24-02-2020", customer1, InvoiceStatus.FINISHED, 10000);
+   
+   cashinvoice1.setTotalPrice();
+   cashinvoice2.setTotalPrice();
    //System.out.println(seller1.getName());
    //seller1.setName("Fadel");
    //System.out.println(seller1.getName());
@@ -44,5 +52,7 @@ public class JFood
    cashlessinvoice1.printData();
    cashlessinvoice2.printData();
    cashlessinvoice3.printData();
+   cashinvoice1.printData();
+   cashinvoice2.printData();
   }
 }
