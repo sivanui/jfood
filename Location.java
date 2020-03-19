@@ -44,8 +44,12 @@ public class Location //Create the class Location
  {
      this.description = description;
  }
- public void printData()
- {
-     System.out.println(province);
- }
+ public String toString()
+    {
+        return province+""+city+""+description;
+    }
+ //public void printData()
+ //{
+ //    System.out.println(province);
+ //}
 }

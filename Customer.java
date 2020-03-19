@@ -1,3 +1,7 @@
+import java.util.Calendar;
+import java.util.*;
+import java.text.*;
+import java.util.regex.*;
 /**
  * This is class Customer.
  *
@@ -10,15 +14,33 @@ public class Customer //Create the class Customer
    private String name;
    private String email;
    private String password;
-   private String joinDate;
+   private Calendar joinDate;
 
-   public Customer(int id, String name, String email, String password, String joinDate)
+   public Customer(int id, String name, String email, String password,
+   Calendar joinDate)
    {
        this.id = id;
        this.name = name;
        this.email = email;
        this.password = password;
        this.joinDate = joinDate;
+       SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+   }
+   public Customer(int id, String name, String email, String password,
+   int year, int month, int dayOfMonth)
+   {
+       this.id = id;
+       this.name = name;
+       this.email = email;
+       this.password = password;
+       joinDate = new GregorianCalendar (dayOfMonth, month, year);
+   }
+   public Customer(int id, String name, String email, String password)
+   {
+       this.id = id;
+       this.name = name;
+       this.email = email;
+       this.password = password;
    }
    public int getId()
    {
@@ -36,7 +58,7 @@ public class Customer //Create the class Customer
    {
        return password;
    }
-   public String getJoinDate()
+   public Calendar getJoinDate()
    {
        return joinDate;
    }
@@ -49,17 +71,44 @@ public class Customer //Create the class Customer
        this.name = name;
    }
    public void setEmail(String email)
-   {
-       this.email = email;
-   }
+    {
+        String emailRegex ="^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        Matcher matcher = pattern.matcher(email);
+        this.email = (matcher.matches())?email: null;
+    }
    public void setPassword(String password)
-   {
-       this.email = email;
-   }
-   public void setJoinDate(String joinDate)
+    {
+        String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,}$";
+        Pattern passwordPattern = Pattern.compile(passwordRegex);
+        Matcher passwordMatcher = passwordPattern.matcher(password);
+        this.password = (passwordMatcher.matches())?password: null;
+    }
+   public void setJoinDate(Calendar joinDate)
    {
        this.joinDate = joinDate;
    }
+   public void setJoinDate(int year, int month, int dayOfMonth)
+   {
+       joinDate = new GregorianCalendar(dayOfMonth, month, year);
+   }
+   public String toString()
+    {
+       if(joinDate != null)
+       {
+           return"ID:  "+id+"\nName: "+name+"\nEmail: "+email+"\nPassword: "+password+"\nDate: "+
+           joinDate.get(Calendar.DAY_OF_MONTH)+"/"+
+           joinDate.get(Calendar.MONTH)+"/"+
+           joinDate.get(Calendar.YEAR)+"\n";
+       }
+       else
+       {    
+           return"ID:  "+id+"\nName: "+name+"\nEmail: "+email+"\nPassword: "+password+"\n";
+       }
+    }
    /* Below is used to
     * print the name of
     * the Customer

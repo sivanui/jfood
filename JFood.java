@@ -1,3 +1,7 @@
+import java.util.Calendar;
+import java.util.*;
+import java.text.*;
+import java.util.regex.*;
 public class JFood
 {
   public static void main (String[] args)
@@ -14,11 +18,16 @@ public class JFood
    
    Food food2 = new Food
    (234, "Hot Dog", seller1, 10000, FoodCategory.WESTERN);
-           
+   
    Customer customer1 = new Customer
-   (1706040302, "John Doe", "johndoe@gmail.com", "+62876543210",
-   "01-01-2020");
- 
+   (1706070809, "Jimmy Jimmy", "jimmy@gmail.com", "Password1", new GregorianCalendar(2020, 03, 20));
+   
+   Customer customer2 = new Customer
+   (1706060606, "Jonathan", "jonathan@gmail.com", "Password2", 19, 03, 2020);
+   
+   Customer customer3 = new Customer
+   (1706040302, "John Doe", "johndoe@gmail.com", "Password3");
+   
    Promo promo1 = new Promo
    (100, "ABCDE", 10000, 30000, true);
    
@@ -39,20 +48,23 @@ public class JFood
    CashInvoice cashinvoice2 = new CashInvoice
    (005, food1, "24-02-2020", customer1, InvoiceStatus.FINISHED, 10000);
    
-   cashinvoice1.setTotalPrice();
-   cashinvoice2.setTotalPrice();
+   //cashinvoice1.setTotalPrice();
+   //cashinvoice2.setTotalPrice();
    //System.out.println(seller1.getName());
    //seller1.setName("Fadel");
    //System.out.println(seller1.getName());
    //food1.printData();
    //food2.printData()
-   cashlessinvoice1.setTotalPrice();
-   cashlessinvoice2.setTotalPrice();
-   cashlessinvoice3.setTotalPrice();
-   cashlessinvoice1.printData();
-   cashlessinvoice2.printData();
-   cashlessinvoice3.printData();
-   cashinvoice1.printData();
-   cashinvoice2.printData();
+   //cashlessinvoice1.setTotalPrice();
+   //cashlessinvoice2.setTotalPrice();
+   //cashlessinvoice3.setTotalPrice();
+   //cashlessinvoice1.printData();
+   //cashlessinvoice2.printData();
+   //cashlessinvoice3.printData();
+   //cashinvoice1.printData();
+   //cashinvoice2.printData();
+   System.out.println (customer1.toString());
+   System.out.println (customer2.toString());
+   System.out.println (customer3.toString());
   }
 }

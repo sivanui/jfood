@@ -63,14 +63,18 @@ public class Food //Create the class Food
   {
       this.category = category;
   }
-  public void printData()
-  {
-      System.out.println("=======FOOD=======");
-      System.out.println("ID: "+id);
-      System.out.println("Name: "+name);
-      System.out.println("Seller: "+seller.getName());
-      System.out.println("City: "+seller.getLocation().getCity());
-      System.out.println("Price: " +price);
-      System.out.println("Category: "+category);
-  }
+  public String toString()
+    {
+        return id+""+name+""+seller.getName()+""+seller.getLocation().getCity()+""+price+""+category;
+    }
+  //public void printData()
+  //{
+  //    System.out.println("=======FOOD=======");
+  //    System.out.println("ID: "+id);
+  //    System.out.println("Name: "+name);
+  //    System.out.println("Seller: "+seller.getName());
+  //    System.out.println("City: "+seller.getLocation().getCity());
+  //    System.out.println("Price: " +price);
+  //    System.out.println("Category: "+category);
+  //}
 }

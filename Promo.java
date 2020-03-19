@@ -61,12 +61,16 @@ public class Promo //Create the class Promo
    {
        this.active = active;
    }
-   public void printData()
-   {
-       System.out.println(id);
-       System.out.println(code);
-       System.out.println(discount);
-       System.out.println(minPrice);
-       System.out.println(active);
-   }
+   public String toString()
+    {
+        return id+""+code+""+discount+""+minPrice+" "+active;
+    }
+   //public void printData()
+   //{
+   //    System.out.println(id);
+   //    System.out.println(code);
+   //    System.out.println(discount);
+   //    System.out.println(minPrice);
+   //    System.out.println(active);
+   //}
 }

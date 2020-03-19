@@ -63,8 +63,12 @@ public class Seller //Create the class Seller
   {
       this.location = location;
   }
-  public void printData()
-  {
-      System.out.println(name);
-  }
+  public String toString()
+    {
+        return id+""+name+""+phoneNumber+""+location;
+    }
+  // void printData()
+  //{
+  //    System.out.println(name);
+  //}
 }

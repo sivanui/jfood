@@ -16,5 +16,5 @@ comment6.target=void\ setCity(java.lang.String)
 comment7.params=description
 comment7.target=void\ setDescription(java.lang.String)
 comment8.params=
-comment8.target=void\ printData()
+comment8.target=java.lang.String\ toString()
 numComments=9
