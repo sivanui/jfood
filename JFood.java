@@ -48,23 +48,23 @@ public class JFood
    CashInvoice cashinvoice2 = new CashInvoice
    (005, food1, "24-02-2020", customer1, InvoiceStatus.FINISHED, 10000);
    
-   //cashinvoice1.setTotalPrice();
+   cashinvoice1.setTotalPrice();
    //cashinvoice2.setTotalPrice();
    //System.out.println(seller1.getName());
    //seller1.setName("Fadel");
    //System.out.println(seller1.getName());
    //food1.printData();
    //food2.printData()
-   //cashlessinvoice1.setTotalPrice();
+   cashlessinvoice1.setTotalPrice();
    //cashlessinvoice2.setTotalPrice();
    //cashlessinvoice3.setTotalPrice();
-   //cashlessinvoice1.printData();
+   cashlessinvoice1.printData();
    //cashlessinvoice2.printData();
    //cashlessinvoice3.printData();
-   //cashinvoice1.printData();
+   cashinvoice1.printData();
    //cashinvoice2.printData();
-   System.out.println (customer1.toString());
-   System.out.println (customer2.toString());
-   System.out.println (customer3.toString());
+   //System.out.println (customer1.toString());
+   //System.out.println (customer2.toString());
+   //System.out.println (customer3.toString());
   }
 }
