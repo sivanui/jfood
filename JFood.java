@@ -1,7 +1,9 @@
 import java.util.Calendar;
+import java.util.Date;
 import java.util.*;
 import java.text.*;
 import java.util.regex.*;
+import java.text.SimpleDateFormat;
 public class JFood
 {
   public static void main (String[] args)
@@ -20,7 +22,7 @@ public class JFood
    (234, "Hot Dog", seller1, 10000, FoodCategory.WESTERN);
    
    Customer customer1 = new Customer
-   (1706070809, "Jimmy Jimmy", "jimmy@gmail.com", "Password1", new GregorianCalendar(2020, 03, 20));
+   (1706070809, "Jimmy Jimmy", "jimmy@gmail.com", "Password1", new GregorianCalendar(2020, (03)-1, 20));
    
    Customer customer2 = new Customer
    (1706060606, "Jonathan", "jonathan@gmail.com", "Password2", 19, 03, 2020);
@@ -32,37 +34,42 @@ public class JFood
    (100, "ABCDE", 10000, 30000, true);
    
    CashlessInvoice cashlessinvoice1 = new CashlessInvoice
-   (001, food1, "02-02-2020", customer1, InvoiceStatus.ONGOING);
+   (001, food1, customer1, InvoiceStatus.ONGOING);
    
    CashlessInvoice cashlessinvoice2 = new CashlessInvoice
-   (002, food1, "20-02-2020", customer1, InvoiceStatus.ONGOING,
+   (002, food1, customer1, InvoiceStatus.ONGOING,
    promo1);
    
    CashlessInvoice cashlessinvoice3 = new CashlessInvoice
-   (003, food2, "22-02-2020", customer1, InvoiceStatus.ONGOING,
+   (003, food2, customer1, InvoiceStatus.ONGOING,
    promo1);
    
    CashInvoice cashinvoice1 = new CashInvoice
-   (004, food1, "23-02-2020", customer1, InvoiceStatus.FINISHED);
+   (004, food1, customer1, InvoiceStatus.FINISHED, 0);
    
    CashInvoice cashinvoice2 = new CashInvoice
-   (005, food1, "24-02-2020", customer1, InvoiceStatus.FINISHED, 10000);
+   (005, food1, customer1, InvoiceStatus.FINISHED, 10000);
    
    cashinvoice1.setTotalPrice();
-   //cashinvoice2.setTotalPrice();
+   cashinvoice2.setTotalPrice();
    //System.out.println(seller1.getName());
    //seller1.setName("Fadel");
    //System.out.println(seller1.getName());
    //food1.printData();
    //food2.printData()
    cashlessinvoice1.setTotalPrice();
-   //cashlessinvoice2.setTotalPrice();
-   //cashlessinvoice3.setTotalPrice();
-   cashlessinvoice1.printData();
+   cashlessinvoice2.setTotalPrice();
+   cashlessinvoice3.setTotalPrice();
+   //cashlessinvoice1.printData();
    //cashlessinvoice2.printData();
    //cashlessinvoice3.printData();
-   cashinvoice1.printData();
+   //cashinvoice1.printData();
    //cashinvoice2.printData();
+   cashinvoice1.toString();
+   cashinvoice2.toString();
+   cashlessinvoice1.toString();
+   cashlessinvoice2.toString();
+   cashlessinvoice3.toString();
    //System.out.println (customer1.toString());
    //System.out.println (customer2.toString());
    //System.out.println (customer3.toString());

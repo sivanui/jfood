@@ -1,15 +1,5 @@
-
-/**
- * Write a description of class Customer here.
- *
- * @author Sulaiman Ivan Achmadi
- * @version 1.2 (19 Mar 2020)
- * 
- */
-
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.*;
 import java.text.*;
 import java.util.Date;
 import java.text.SimpleDateFormat;
@@ -17,219 +7,205 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.util.regex.*;
 
-public class Customer//create class Customer
+/**
+ * Class Customer terdiri dari atribut id, name, email, password, joinDate
+ * 
+ * @author  Sulaiman Ivan Achmadi
+ * @version 20-03-2020
+*/
+
+
+public class Customer
 {
     /**
-     * membuat variabel di class customer
-     * variabel instance
-     * private hanya bisa diberikan pada member class
+     * Bagian dari variabel Instances
+     * 
      */
     private int id;
     private String name;
     private String email;
     private String password;
     private Calendar joinDate;
-      
-
+    
     /**
-     * Constructor for objects of class Customer
+     * Constructor untuk objek dari Class Customer
+     * 
+     * @param id untuk mendefinisikan input id baru
+     * @param name untuk mendefinisikan input name baru
+     * @param email untuk mendefiniskan input email baru
+     * @param password untuk mendefiniskan input password baru
+     * @param joinDate untuk mendefiniskan input joinDate baru
      */
     public Customer(int id, String name, String email, String password, Calendar joinDate)
     {
-        this.id = id;
-        this.name = name;
-        String emailRegex = "^[\\w&*_~]+(?:\\.[\\w&*_~]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
-       Pattern emailPattern = Pattern.compile(emailRegex);
-       Matcher emailMatcher = emailPattern.matcher(email);
-       
-       if(emailMatcher.matches())
-       {
-           this.email=email;
-       }
-       else 
-       {
-           this.email="";
-       }
-       
-       String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,}$";
-       Pattern passwordPattern = Pattern.compile(passwordRegex);
-       Matcher passwordMatcher = passwordPattern.matcher(password);
-       
-       if(passwordMatcher.matches())
-       {
-           this.password=password;
-       }
-       else 
-       {
-           this.password="";
-       }
-       
-       this.joinDate = joinDate;
- 
+       this.id = id;
+       this.name = name;
+       setEmail(email);
+       setPassword(password);
+       this.joinDate = Calendar.getInstance();
     }
     
     public Customer(int id, String name, String email, String password, int year, int month, int dayOfMonth)
     {
-        this.id = id;
-        this.name = name;
-        String emailRegex = "^[\\w&*_~]+(?:\\.[\\w&*_~]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
-       Pattern emailPattern = Pattern.compile(emailRegex);
-       Matcher emailMatcher = emailPattern.matcher(email);
-       
-       if(emailMatcher.matches())
-       {
-           this.email=email;
-       }
-       else 
-       {
-           this.email="";
-       }
-       
-       String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,}$";
-       Pattern passwordPattern = Pattern.compile(passwordRegex);
-       Matcher passwordMatcher = passwordPattern.matcher(password);
-       
-       if(passwordMatcher.matches())
-       {
-           this.password=password;
-       }
-       else 
-       {
-           this.password="";
-       }
-       
-       this.joinDate= new GregorianCalendar(dayOfMonth,month,year);
- 
+       this.id = id;
+       this.name = name;
+       setEmail(email);
+       setPassword(password);
+       this.joinDate= new GregorianCalendar(year,month,dayOfMonth);
     }
     
     public Customer(int id, String name, String email, String password)
     {
        this.id = id;
        this.name = name;
-       String emailRegex = "^[\\w&*_~]+(?:\\.[\\w&*_~]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
-       Pattern emailPattern = Pattern.compile(emailRegex);
-       Matcher emailMatcher = emailPattern.matcher(email);
-       
-       if(emailMatcher.matches())
-       {
-           this.email=email;
-       }
-       else 
-       {
-           this.email="";
-       }
-       
-       String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,}$";
-       Pattern passwordPattern = Pattern.compile(passwordRegex);
-       Matcher passwordMatcher = passwordPattern.matcher(password);
-       
-       if(passwordMatcher.matches())
-       {
-           this.password=password;
-       }
-       else 
-       {
-           this.password="";
-       }
+       setEmail(email);
+       setPassword(password);
     }
     
-    
-   
-    
+    /**
+     * Getter id untuk Customer
+     * @return id untuk memastikan variabel id ke variabel instance
+     */
     public int getId()
     {
         return id;
     }
     
-     public String getName()
+    /**
+     * Getter name untuk Customer
+     * @return name untuk memastikan variabel name ke variabel instance
+     */
+    public String getName()
     {
         return name;
     }
     
+    /**
+     * Getter email untuk Customer
+     * @return email untuk memastikan variabel email ke variabel instance
+     */
     public String getEmail()
     {
         return email;
     }
     
+    /**
+     * Getter password untuk Customer
+     * @return password untuk memastikan variabel password ke variabel instance
+     */
     public String getPassword()
     {
         return password;
     }
     
+    /**
+     * Getter joinDate untuk Customer
+     * @return joinDate untuk memastikan variabel joinDate ke variabel instance
+     */
     public Calendar getJoinDate()
     {
-        return joinDate;
+    return joinDate;
     }
     
+    /**
+     * Setter id untuk Customer
+     * @param id untuk set ke instance variabel id
+     */
     public void setId(int id)
     {
-        this.id =id;
+        this.id = id;
     }
     
+    /**
+     * Setter name untuk Customer
+     * @param name untuk set ke instance variabel name
+     */
     public void setName(String name)
     {
         this.name = name;
     }
     
+    /**
+     * Setter email untuk Customer
+     * @param email untuk set ke instance variabel email
+     */
     public void setEmail(String email)
     {
-        String pattern =  "^[a-zA-Z0-9_+&*-]+(?:\\."+  
-                            "[a-zA-Z0-9_+&*-]+)*@" +  
-                            "(?:[a-zA-Z0-9-]+\\.)+[a-z" +  
-                            "A-Z]{2,7}$"+
-                            "\\b[\\w.%-]+@[-.\\w]+\\.[A-Za-z]{2,4}\\b";
-        Pattern p = Pattern.compile(pattern);
-        Matcher m = p.matcher(email);
-        if (m.find()) {
-            System.out.println("Email : " + m.group());
-            this.email = email;
-        } else {
-            System.out.println("Email : null");
-            this.email = email;
+        String regex = "^[\\w&*_~]+(?:\\.[\\w&*_~]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        if(matcher.matches())
+        {
+            this.email=email;
+        }
+        else 
+        {
+            this.email="";
         }
     }
     
+    /**
+     * Setter password untuk Customer
+     * @param password untuk set ke instance variabel password
+     */
     public void setPassword(String password)
     {
-        String pattern = ".{6,}";
-        String pattern1 = "(.*)[a-z]{1,}(.*)";
-        String pattern2 = "(.*)[A-Z]{1,}(.*)";
-        String pattern3 = "(.*)[0-9]{1,}(.*)";
-        
-        if (Pattern.matches(pattern, password)&& 
-        Pattern.matches(pattern1, password))
+        String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,}$";
+        Pattern passwordPattern = Pattern.compile(passwordRegex);
+        Matcher passwordMatcher = passwordPattern.matcher(password);
+        if(passwordMatcher.matches())
         {
-            this.password = password;
-            System.out.println("You have changed your password successfully");
+            this.password=password;
         }
-        else
+        else 
         {
-            this.password = null;
-            System.out.println("Invalid password!");
+            this.password="";
         }
+    }
+    
+    /**
+     * Setter joinDate untuk Customer
+     * @param joinDate untuk set ke instance variabel joinDate
+     */
+    public void setJoinDate(Calendar joinDate)
+    {
+        this.joinDate = joinDate;
     }
     
     public void setJoinDate(int year, int month, int dayOfMonth)
     {
         joinDate = new GregorianCalendar (year, month, dayOfMonth);
     }
-   
     
+    /**
+     * Print Data
+     */
     public String toString()
     {
-       if(joinDate != null)
-       {
-           return"ID:  "+id+"\nName: "+name+"\nEmail: "+email+"\nPassword: "+password+"\nDate: "+
-           joinDate.get(Calendar.DAY_OF_MONTH)+"/"+
-           joinDate.get(Calendar.MONTH)+"/"+
-           joinDate.get(Calendar.YEAR)+"\n";
+        String string = "";
+        
+        if(joinDate!=null)
+        {
+            Date date = joinDate.getTime();             
+            SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy");
+            String date1 = format1.format(date);  
+            string = "Customer:\n"+
+                   "ID = "+id+"\n"+
+                   "Nama = "+name+"\n"+
+                   "Email = "+email+"\n"+
+                   "Password = "+password+"\n"+
+                   "Join Date = "+date1+"\n";
         }
-       else
-       {    
-           return"ID:  "+id+"\nName: "+name+"\nEmail: "+email+"\nPassword: "+password+"\n";
+        else
+        {
+            string = "Customer:\n"+
+                   "ID = "+id+"\n"+
+                   "Nama = "+name+"\n"+
+                   "Email = "+email+"\n"+
+                   "Password = "+password+"\n";
         }
+        
+        System.out.println(string);
+        return string;
     }
-    
-  
-
 }

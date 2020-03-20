@@ -1,27 +1,42 @@
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.*;
+import java.text.*;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.regex.*;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import java.util.Scanner;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+
 /**
  * This is class Invoice.
  *
  * @author Sulaiman Ivan Achmadi
  * @version 27/2/20
  */
-public abstract class Invoice //Create the class Invoice
-{
+  public abstract class Invoice //Create the class Invoice
+  {
   /* Below is used to
    * declare the variables
    * of the Invoice
    */
   private int id;
   private Food food;
-  private String date;
+  private Calendar date;
   protected int totalPrice;
   private Customer customer;
   private InvoiceStatus invoiceStatus;
-  public Invoice(int id, Food food, String date, Customer customer,
+  public Invoice(int id, Food food,
+  //Calendar date,
+  Customer customer,
   InvoiceStatus invoiceStatus)
   {
      this.id = id;
      this.food = food;
-     this.date = date;
+     //this.date = date;
      this.customer = customer;
      this.invoiceStatus = invoiceStatus;
   }
@@ -33,7 +48,7 @@ public abstract class Invoice //Create the class Invoice
   {
      return food;
   }
-  public String getDate()
+  public Calendar getDate()
   {
        return date;
   }
@@ -58,9 +73,13 @@ public abstract class Invoice //Create the class Invoice
   {
       this.food = food;
   }
-  public void setDate(String date)
+  public void setDate(Calendar date)
   {
       this.date = date;
+  }
+  public void setDate(int year, int month, int dayOfMonth)
+  {
+      date = new GregorianCalendar (year, month-1, dayOfMonth);
   }
   public abstract void setTotalPrice();
   public void setCustomer(Customer customer)
@@ -71,5 +90,13 @@ public abstract class Invoice //Create the class Invoice
   {
       this.invoiceStatus = invoiceStatus;
   }
-  public abstract void printData();
+  public void printData()
+  {
+      System.out.println("=====INVOICE=====");
+        System.out.println("ID: " +getId());
+        System.out.println("Food: " +getFood());
+        System.out.println("Customer: " +getCustomer().getName());
+        System.out.println("Total Price: " +getTotalPrice());
+        System.out.println("Status: " +getInvoiceStatus());
+  }
 }
