@@ -24,29 +24,26 @@ import java.time.LocalDateTime;
    * of the Invoice
    */
   private int id;
-  private Food food;
+  private ArrayList<Food> foods;
   private Calendar date;
   protected int totalPrice;
   private Customer customer;
   private InvoiceStatus invoiceStatus;
-  public Invoice(int id, Food food,
-  //Calendar date,
-  Customer customer,
-  InvoiceStatus invoiceStatus)
+  public Invoice(int id, ArrayList<Food> foods,
+  Customer customer)
   {
      this.id = id;
-     this.food = food;
-     //this.date = date;
+     this.foods = foods;
      this.customer = customer;
-     this.invoiceStatus = invoiceStatus;
+     this.invoiceStatus = InvoiceStatus.ONGOING;
   }
   public int getId()
   {
        return id;
   }
-  public Food getFood()
+  public ArrayList<Food> getFoods()
   {
-     return food;
+     return foods;
   }
   public Calendar getDate()
   {
@@ -69,9 +66,9 @@ import java.time.LocalDateTime;
   {
       this.id = id;
   }
-  public void setFood(Food food)
+  public void setFood(ArrayList<Food> foods)
   {
-      this.food = food;
+      this.foods = foods;
   }
   public void setDate(Calendar date)
   {
@@ -90,13 +87,15 @@ import java.time.LocalDateTime;
   {
       this.invoiceStatus = invoiceStatus;
   }
-  public void printData()
+  public abstract String toString();
+  /*public void printData()
   {
       System.out.println("=====INVOICE=====");
         System.out.println("ID: " +getId());
-        System.out.println("Food: " +getFood());
+        System.out.println("Food: " +getFoods());
         System.out.println("Customer: " +getCustomer().getName());
         System.out.println("Total Price: " +getTotalPrice());
         System.out.println("Status: " +getInvoiceStatus());
   }
+  */
 }

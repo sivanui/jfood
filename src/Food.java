@@ -1,10 +1,12 @@
+import java.util.ArrayList;
+
 /**
  * This is class Food.
  *
  * @author Sulaiman Ivan Achmadi
  * @version 27/2/20
  */
-public class Food //Create the class Food
+public class Food extends ArrayList<Food> //Create the class Food
 {
   /* Below is used to
    * declare the variables
