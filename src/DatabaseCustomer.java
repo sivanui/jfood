@@ -1,4 +1,8 @@
 import java.util.ArrayList;
+import java.lang.reflect.Array;
+import java.time.*;
+import java.text.*;
+import java.util.ArrayList;
 /**
  * This is class DatabaseCustomer.
  *
@@ -10,12 +14,7 @@ public class DatabaseCustomer //Create the class DatabaseCustomer
     // instance variables - replace the example below with your own
     //private static String[] listCustomer;
     private static ArrayList<Customer> CUSTOMER_DATABASE =  new ArrayList<Customer>();
-    private static int LastId = 0;
-
-    public DatabaseCustomer()
-    {
-
-    }
+    private static int lastId = 0;
 
     public static ArrayList<Customer> getCustomerDatabase()
     {
@@ -23,50 +22,38 @@ public class DatabaseCustomer //Create the class DatabaseCustomer
     }
     public static int getLastId()
     {
-        return LastId;
+        return lastId;
     }
 
-    public static Customer getCustomerById(int id)
-    {
-        Customer returnValue = null;
-        for(Customer customerDB : CUSTOMER_DATABASE)
-        {
-            if(customerDB.getId() == id)
-            {
-                returnValue = customerDB;
+    public static Customer getCustomerById(int id){
+        for (Customer customer : CUSTOMER_DATABASE) {
+            if (customer.getId() == id) {
+                return customer;
             }
         }
-        return returnValue;
+        return null;
     }
 
-    public static boolean addCustomer(Customer customer)
-    {
-        for(Customer customerDB : CUSTOMER_DATABASE)
-        {
-            if(customer.getName().equals(customerDB.getName()) &&
-                    customer.getEmail().equals(customerDB.getEmail()))
-            {
+    public static boolean addCustomer(Customer customer){
+        for(Customer customers : CUSTOMER_DATABASE){
+            if (customers.getEmail().equals(customer.getEmail())) {
                 return false;
             }
         }
         CUSTOMER_DATABASE.add(customer);
-        LastId = customer.getId();
+        lastId = customer.getId();
         return true;
-
     }
 
-    public static boolean removeCustomer(int id)
-    {
-        boolean returnValue = false;
-        for(Customer customerDB : CUSTOMER_DATABASE)
-        {
-            if(customerDB.getId() == id)
-            {
-                CUSTOMER_DATABASE.remove(id);
-                returnValue = true;
+    public static boolean removeCustomer(int id){
+        for(int i = 0; i < CUSTOMER_DATABASE.size(); i++){
+            Customer customer = CUSTOMER_DATABASE.get(i);
+            if (customer.getId() == id){
+                CUSTOMER_DATABASE.remove(i);
+                return true;
             }
         }
-        return returnValue;
+        return false;
     }
 
 }

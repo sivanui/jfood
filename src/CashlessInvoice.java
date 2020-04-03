@@ -1,15 +1,8 @@
 import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.*;
-import java.text.*;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.text.SimpleDateFormat;
-import java.util.regex.*;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
-import java.util.Scanner;
-import java.time.format.DateTimeFormatter;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 /**
  * This is class CashlessInvoice.
  *
@@ -23,16 +16,16 @@ public class CashlessInvoice extends Invoice
    * declare the variables
    * of the CashlessInvoice
    */
- private static PaymentType PAYMENT_TYPE = PaymentType.CASHLESS;
+ private PaymentType PAYMENT_TYPE = PaymentType.CASHLESS;
  private Promo promo;
 
- public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer)
+ public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer, Promo invoiceStatus)
  {
      super(id, foods, customer);
  }
- public CashlessInvoice(int id, Food food, Customer customer, Promo promo)
+ public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer, InvoiceStatus invoiceStatus,  Promo promo)
  {
-     super(id, food, customer);
+     super(id, foods, customer);
      this.promo = promo;
  }
  public PaymentType getPaymentType()
@@ -47,51 +40,44 @@ public class CashlessInvoice extends Invoice
  {
      this.promo = promo;
  }
- public void setTotalPrice() {
-     for (int i = 0; i <= getFoods().size(); i++) {
-         if (promo != null && getPromo().getActive() == true && getFoods().get(i).getPrice() > getPromo().getMinPrice()) {
-             totalPrice = getFoods().get(i).getPrice() - getPromo().getDiscount();
-         } else {
-             totalPrice = getFoods().get(i).getPrice();
-         }
-     }
- }
- public String toString()
- {
-     String string = "";
-     for (int i = 0; i <= getFoods().size(); i++)
-     {
-         if (promo == null ||
-                 promo.getActive() == false ||
-                 getFoods().get(i).getPrice() < getPromo().getMinPrice())
-         {
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MMMM yyyy");
-                LocalDateTime now = LocalDateTime.now();
-                string =
-                        ("================INVOICE================" +
-                                "\nID: " + super.getId() +
-                                "\nFood: " + super.getFoods().get(i).getName() +
-                                "\nDate: " + dtf.format(now) +
-                                "\nCustomer: " + super.getCustomer().getName() +
-                                "\nTotal Price: " + getFoods().get(i).getPrice() +
-                                "\nStatus: " + super.getInvoiceStatus() +
-                                "\nPayment Type: " + PAYMENT_TYPE + "\n");
-            } else {
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MMMM yyyy");
-                LocalDateTime now = LocalDateTime.now();
-                string =
-                        ("================INVOICE================" +
-                                "\nID: " + super.getId() +
-                                "\nFood: " + super.getFoods().get(i).getName() +
-                                "\nDate: " + dtf.format(now) +
-                                "\nCustomer: " + super.getCustomer().getName() +
-                                "\nPromo : " + getPromo().getCode() +
-                                "\nTotal Price: " + super.getTotalPrice() +
-                                "\nStatus: " + super.getInvoiceStatus() +
-                                "\nPayment Type: " + PAYMENT_TYPE + "\n");
-            }
+    public void setTotalPrice(){
+        for(Food foodList : getFoods())
+        {
+            totalPrice += foodList.getPrice();
         }
-        System.out.println(string);
-        return string;
+        if (promo!= null  && getPromo().getActive() == true && totalPrice > getPromo().getMinPrice()){
+
+            totalPrice = totalPrice - getPromo().getDiscount();
+        } else{
+            this.totalPrice = totalPrice;
+        }
+    }
+    public String toString(){
+        SimpleDateFormat formatDate = new SimpleDateFormat ("dd MMMM yyyy");
+        setTotalPrice();
+        String listMakanan = "";
+        for (Food food : getFoods())
+        {
+            listMakanan += food.getName() + ", ";
+        }
+        if (promo!= null && getPromo().getActive() == true && totalPrice > getPromo().getMinPrice() ){
+            return String.format("==========INVOICE CASHLESS==========" + "\n" +
+                    "Id=" + getId() + "\n" +
+                    "Food=" + listMakanan + "\n" +
+                    "Date=" + formatDate.format(getDate().getTime()) + "\n" +
+                    "Customer=" + getCustomer().getName() + "\n" +
+                    "Total Price=" + getTotalPrice() + "\n" +
+                    "Payment Type=" + getPaymentType() + "\n" +
+                    "Delivery Fee=" + getPromo().getCode() + "\n");
+        } else {
+            return String.format("==========INVOICE CASHLESS==========" + "\n" +
+                    "Id=" + getId() + "\n" +
+                    "Food=" + listMakanan + "\n" +
+                    "Date=" + formatDate.format(getDate().getTime()) + "\n" +
+                    "Customer=" + getCustomer().getName() + "\n" +
+                    "Total Price=" + getTotalPrice() + "\n" +
+                    "Payment Type=" + getPaymentType() + "\n");
+
+        }
     }
  }

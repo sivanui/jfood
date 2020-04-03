@@ -180,32 +180,23 @@ public class Customer
     /**
      * Print Data
      */
-    public String toString()
-    {
-        String string = "";
-        
-        if(joinDate!=null)
-        {
-            Date date = joinDate.getTime();             
-            SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy");
-            String date1 = format1.format(date);  
-            string = "Customer:\n"+
-                   "ID = "+id+"\n"+
-                   "Nama = "+name+"\n"+
-                   "Email = "+email+"\n"+
-                   "Password = "+password+"\n"+
-                   "Join Date = "+date1+"\n";
+    public String toString(){
+        SimpleDateFormat formatDate = new SimpleDateFormat ("dd MMMM yyyy");
+        if (joinDate == null){
+            return String.format("==========CUSTOMER==========" + "\n" +
+                    "Id=" + getId() + "\n" +
+                    "Nama=" + getName() + "\n" +
+                    "Email=" + getEmail() + "\n" +
+                    "Password=" + password + "\n" +
+                    "Join Date=" + null + "\n");
+        } else {
+            return String.format("==========CUSTOMER==========" + "\n" +
+                    "Id=" + getId() + "\n" +
+                    "Nama=" + getName() + "\n" +
+                    "Email=" + getEmail() + "\n" +
+                    "Password=" + password + "\n" +
+                    "Join Date=" + formatDate.format(joinDate.getTime()) + "\n");
+
         }
-        else
-        {
-            string = "Customer:\n"+
-                   "ID = "+id+"\n"+
-                   "Nama = "+name+"\n"+
-                   "Email = "+email+"\n"+
-                   "Password = "+password+"\n";
-        }
-        
-        System.out.println(string);
-        return string;
     }
 }

@@ -1,5 +1,7 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.time.*;
+import java.text.*;
 /**
  * Write a description of class DatabaseSeller here.
  *
@@ -8,7 +10,7 @@ import java.util.ArrayList;
  */
 public class DatabaseSeller
 {
-    private static int lastId;
+    private static int lastId = 0;
     private static ArrayList<Seller> SELLER_DATABASE=new ArrayList<Seller>();
     public static ArrayList<Seller> getSellerDatabase()
     {
@@ -35,11 +37,10 @@ public class DatabaseSeller
         lastId = seller.getId();
         return true;
     }
-    public static boolean removeSeller(int id)
-    {
-        for(Seller seller : SELLER_DATABASE) {
-            if(seller.getId() == id) {
-                SELLER_DATABASE.remove(seller);
+    public static boolean removeSeller(int id){
+        for(Seller sell : SELLER_DATABASE){
+            if(sell.getId()==id){
+                SELLER_DATABASE.remove(sell);
                 return true;
             }
         }
