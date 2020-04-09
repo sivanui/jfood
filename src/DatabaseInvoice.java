@@ -33,10 +33,9 @@ public class DatabaseInvoice {
     public static ArrayList<Invoice> getInvoiceByCustomer(int customerId)
     {
         ArrayList<Invoice> invoiceList = new ArrayList<>();
-        Customer customer = DatabaseCustomer.getCustomerById(customerId);
         for(Invoice invoice : INVOICE_DATABASE)
         {
-            if(invoice.getCustomer().equals(customer)){
+            if(invoice.getCustomer().equals(customerId)){
                 invoiceList.add(invoice);
             }
         }

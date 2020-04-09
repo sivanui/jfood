@@ -24,7 +24,7 @@ public class DatabaseFood //Create the class DatabaseFood
     {
         return lastId;
     }
- public static Food getFoodById(int id)
+ public static Food getFoodById(int id) throws FoodNotFoundException
     {
         for(Food foods : FOOD_DATABASE)
         {
@@ -33,7 +33,7 @@ public class DatabaseFood //Create the class DatabaseFood
                 return foods;
             }
         }
-        return null;
+        throw new FoodNotFoundException(id);
     }
     public static ArrayList<Food> getFoodBySeller(int sellerId){
         ArrayList<Food> LIST_FOOD_BY_SELLER = new ArrayList<Food>();
@@ -60,13 +60,14 @@ public class DatabaseFood //Create the class DatabaseFood
         lastId = food.getId();
         return true;
     }
-    public static boolean removeFood(int id){
+    public static boolean removeFood(int id) throws FoodNotFoundException
+    {
         for(Food food : FOOD_DATABASE){
             if(food.getId()== id){
                 FOOD_DATABASE.remove(food);
                 return true;
             }
         }
-        return false;
+        throw new FoodNotFoundException(id);
     }
 }
