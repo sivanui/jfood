@@ -1,8 +1,8 @@
 /**
  * Write a description of class CashInvoice here.
  *
- * @author Ahmad Fakhrul Fauzi
- * @version 13 Maret 2020
+ * @author Sulaiman Ivan Achmadi
+ * @version 2/4/20
  */
 
 import java.util.ArrayList;
@@ -38,62 +38,40 @@ public class CashInvoice extends Invoice
     {
         return PAYMENT_TYPE;
     }
-
     public int getDeliveryFee()
     {
         return deliveryFee;
     }
-
     public void setDeliveryFee(int deliveryFee)
     {
         this.deliveryFee = deliveryFee;
     }
-
-    public void setTotalPrice()
-    {
-        for (int i=0 ; i<= getFoods().size() ; i++) {
-            if (deliveryFee > 0) {
-                totalPrice = getFoods().get(i).getPrice() + getDeliveryFee();
-            } else {
-                totalPrice = getFoods().get(i).getPrice();
-
-            }
+    public void setTotalPrice() {
+        super.totalPrice=0;
+        for(Food foodList : getFoods())
+        {
+            super.totalPrice=super.totalPrice+foodList.getPrice();
         }
+        super.totalPrice=super.totalPrice+deliveryFee;
     }
 
-
     public String toString() {
-        String string = "";
-        for (int i = 0; i <= getFoods().size(); i++) {
-
-            if (deliveryFee == 0) {
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MMMM yyyy");
-                LocalDateTime now = LocalDateTime.now();
-                string =
-                        ("================INVOICE================" +
-                                "\nID: " + super.getId() +
-                                "\nFood: " + super.getFoods().get(i).getName() +
-                                "\nDate: " + dtf.format(now) +
-                                "\nCustomer: " + super.getCustomer().getName() +
-                                "\nTotal Price: " + getFoods().get(i).getPrice() +
-                                "\nStatus: " + super.getInvoiceStatus() +
-                                "\nPayment Type: " + PAYMENT_TYPE + "\n");
-            } else {
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MMMM yyyy");
-                LocalDateTime now = LocalDateTime.now();
-                string =
-                        ("================INVOICE================" +
-                                "\nID: " + super.getId() +
-                                "\nFood: " + super.getFoods().get(i).getName() +
-                                "\nDate: " + dtf.format(now) +
-                                "\nCustomer: " + super.getCustomer().getName() +
-                                "\nDeliveryFee : " + getDeliveryFee() +
-                                "\nTotal Price: " + super.getTotalPrice() +
-                                "\nStatus: " + super.getInvoiceStatus() +
-                                "\nPayment Type: " + PAYMENT_TYPE + "\n");
-            }
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
+        String foods = "";
+        for(Food foodList : getFoods())
+        {
+            foods = foods + foodList.getName() + ", ";
         }
-        System.out.println(string);
-        return string;
+        foods = foods.substring(0, foods.length() - 2);
+
+        return "============INVOICE CASH============"+
+                "\nID :" + super.getId()+
+                "\nFoods :"  + foods+
+                "\nDate :" + sdf.format(super.getDate().getTime())+
+                "\nCustomer :" + super.getCustomer().getName()+
+                "\nDelivery Fee :" + getDeliveryFee()+
+                "\nTotal price :" + totalPrice+
+                "\nStatus :" + super.getInvoiceStatus()+
+                "\nPayment Type :" + getPaymentType();
     }
 }

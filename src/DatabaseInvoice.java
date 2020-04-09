@@ -32,24 +32,22 @@ public class DatabaseInvoice {
 
     public static ArrayList<Invoice> getInvoiceByCustomer(int customerId)
     {
-        ArrayList<Invoice> listCust = new ArrayList<Invoice>();
-        for(Invoice invoice: INVOICE_DATABASE)
+        ArrayList<Invoice> invoiceList = new ArrayList<>();
+        Customer customer = DatabaseCustomer.getCustomerById(customerId);
+        for(Invoice invoice : INVOICE_DATABASE)
         {
-            if(invoice.getCustomer().getId() == customerId)
-            {
-                listCust.add(invoice);
-                return listCust;
+            if(invoice.getCustomer().equals(customer)){
+                invoiceList.add(invoice);
             }
         }
-        return null;
+        return invoiceList;
     }
 
     public static boolean addInvoice(Invoice invoice)
     {
-        for(Invoice invoiceDB: INVOICE_DATABASE)
-        {
-            if(invoiceDB.getInvoiceStatus().equals(invoice.getInvoiceStatus().ONGOING))
-            {
+        int customerId = invoice.getCustomer().getId();
+        for (Invoice _invoice : INVOICE_DATABASE) {
+            if (_invoice.getCustomer().getId() == customerId && _invoice.getInvoiceStatus() == InvoiceStatus.ONGOING){
                 return false;
             }
         }
@@ -58,10 +56,11 @@ public class DatabaseInvoice {
         return true;
     }
 
-    public static boolean changeInvoiceStatus(int id, InvoiceStatus invoiceStatus){
-        for(Invoice invoiceDB: INVOICE_DATABASE){
-            if(invoiceDB.getInvoiceStatus() == InvoiceStatus.ONGOING && invoiceDB.getId() == id){
-                invoiceDB.setInvoiceStatus(invoiceStatus);
+    public static boolean changeInvoiceStatus(int id, InvoiceStatus invoiceStatus)
+    {
+        for(Invoice invoice : INVOICE_DATABASE) {
+            if(invoice.getId() == id && invoice.getInvoiceStatus().equals(InvoiceStatus.ONGOING)) {
+                invoice.setInvoiceStatus(invoiceStatus);
                 return true;
             }
         }

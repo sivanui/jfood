@@ -5,8 +5,8 @@ import java.text.*;
 /**
  * Write a description of class DatabaseSeller here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Sulaiman Ivan Achmadi
+ * @version 2/4/20
  */
 public class DatabaseSeller
 {

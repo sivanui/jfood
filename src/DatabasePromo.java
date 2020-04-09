@@ -3,8 +3,8 @@ import java.util.ArrayList;
 /**
  * Write a description of class DatabasePromo here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Sulaiman Ivan Achmadi
+ * @version 2/4/20
  */
 public class DatabasePromo
 {
@@ -54,6 +54,11 @@ public class DatabasePromo
 
     public static boolean addPromo(Promo promo)
     {
+        for (Promo _promo : PROMO_DATABASE) {
+            if (_promo.getCode().equals(promo.getCode())){
+                return false;
+            }
+        }
         PROMO_DATABASE.add(promo);
         lastId = promo.getId();
         return true;

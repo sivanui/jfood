@@ -27,6 +27,7 @@ import java.util.ArrayList;
   {
      this.id = id;
      this.foods = foods;
+     this.date=Calendar.getInstance();
      this.customer = customer;
      this.invoiceStatus = InvoiceStatus.ONGOING;
   }
@@ -69,19 +70,20 @@ import java.util.ArrayList;
   }
   public void setDate(int year, int month, int dayOfMonth)
   {
-      date = new GregorianCalendar (year, month-1, dayOfMonth);
+      this.date = new GregorianCalendar (year, month, dayOfMonth);
   }
   public abstract void setTotalPrice();
   public void setCustomer(Customer customer)
   {
       this.customer = customer;
   }
-  public void setInvoiceStatus(InvoiceStatus status)
+  public void setInvoiceStatus(InvoiceStatus invoiceStatus)
   {
       this.invoiceStatus = invoiceStatus;
   }
-  //public abstract String toString();
-  /*public void printData()
+  public abstract String toString();
+  /*
+  public void printData()
   {
       System.out.println("=====INVOICE=====");
         System.out.println("ID: " +getId());

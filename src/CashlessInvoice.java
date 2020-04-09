@@ -16,14 +16,14 @@ public class CashlessInvoice extends Invoice
    * declare the variables
    * of the CashlessInvoice
    */
- private PaymentType PAYMENT_TYPE = PaymentType.CASHLESS;
+ private static final PaymentType PAYMENT_TYPE = PaymentType.CASHLESS;
  private Promo promo;
 
- public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer, Promo invoiceStatus)
+ public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer)
  {
      super(id, foods, customer);
  }
- public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer, InvoiceStatus invoiceStatus,  Promo promo)
+ public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer,  Promo promo)
  {
      super(id, foods, customer);
      this.promo = promo;
@@ -40,44 +40,44 @@ public class CashlessInvoice extends Invoice
  {
      this.promo = promo;
  }
-    public void setTotalPrice(){
+ public void setTotalPrice(){
+     super.totalPrice=0;
+     for(Food listFood : getFoods())
+     {
+         super.totalPrice=super.totalPrice+listFood.getPrice();
+     }
+     if(promo != null && super.totalPrice>=promo.getMinPrice() && promo.getActive() == true) {
+         super.totalPrice = super.totalPrice - promo.getDiscount();
+     }
+ }
+    public String toString() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
+        String foods = "";
         for(Food foodList : getFoods())
         {
-            totalPrice += foodList.getPrice();
+            foods = foods + foodList.getName() + ", ";
         }
-        if (promo!= null  && getPromo().getActive() == true && totalPrice > getPromo().getMinPrice()){
+        foods = foods.substring(0, foods.length() - 2);
 
-            totalPrice = totalPrice - getPromo().getDiscount();
-        } else{
-            this.totalPrice = totalPrice;
-        }
-    }
-    public String toString(){
-        SimpleDateFormat formatDate = new SimpleDateFormat ("dd MMMM yyyy");
-        setTotalPrice();
-        String listMakanan = "";
-        for (Food food : getFoods())
-        {
-            listMakanan += food.getName() + ", ";
-        }
-        if (promo!= null && getPromo().getActive() == true && totalPrice > getPromo().getMinPrice() ){
-            return String.format("==========INVOICE CASHLESS==========" + "\n" +
-                    "Id=" + getId() + "\n" +
-                    "Food=" + listMakanan + "\n" +
-                    "Date=" + formatDate.format(getDate().getTime()) + "\n" +
-                    "Customer=" + getCustomer().getName() + "\n" +
-                    "Total Price=" + getTotalPrice() + "\n" +
-                    "Payment Type=" + getPaymentType() + "\n" +
-                    "Delivery Fee=" + getPromo().getCode() + "\n");
-        } else {
-            return String.format("==========INVOICE CASHLESS==========" + "\n" +
-                    "Id=" + getId() + "\n" +
-                    "Food=" + listMakanan + "\n" +
-                    "Date=" + formatDate.format(getDate().getTime()) + "\n" +
-                    "Customer=" + getCustomer().getName() + "\n" +
-                    "Total Price=" + getTotalPrice() + "\n" +
-                    "Payment Type=" + getPaymentType() + "\n");
-
+        if(promo != null && promo.getActive() == true) {
+            return "============INVOICE CASHLESS============"+
+                    "\nID :" + super.getId()+
+                    "\nFoods :"  + foods+
+                    "\nDate :" + sdf.format(super.getDate().getTime())+
+                    "\nCustomer :" + super.getCustomer().getName()+
+                    "\nPromo Code:" + promo.getCode()+
+                    "\nTotal price :" + totalPrice+
+                    "\nStatus :" + super.getInvoiceStatus()+
+                    "\nPayment Type :" + getPaymentType();
+        }else {
+            return "============INVOICE CASHLESS============"+
+                    "\nID :" + super.getId()+
+                    "\nFoods :"  + foods+
+                    "\nDate :" + sdf.format(super.getDate().getTime())+
+                    "\nCustomer :" + super.getCustomer().getName()+
+                    "\nTotal price :" + totalPrice+
+                    "\nStatus :" + super.getInvoiceStatus()+
+                    "\nPayment Type :" + getPaymentType();
         }
     }
  }
