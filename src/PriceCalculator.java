@@ -9,9 +9,9 @@ public class PriceCalculator implements Runnable {
 
     public void run() {
         try {
-            System.out.println("Calculating invoice id: " + invoice.getId());
+            System.out.println("Calculating Invoice ID: " + invoice.getId());
             invoice.setTotalPrice();
-            System.out.println("Finish calculating invoice id: " + invoice.getId());
+            System.out.println("Finish calculating Invoice ID: " + invoice.getId());
             Thread.sleep(50);
         } catch (InterruptedException e) {
             System.out.println("Thread Invoice " +  invoice.getId() + " interrupted.");

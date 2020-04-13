@@ -1,4 +1,3 @@
-import java.util.Calendar;
 import java.util.*;
 
 public class JFood
@@ -8,13 +7,15 @@ public class JFood
   Location location1 = new Location("Jakarta", "DKI Jakarta", "Indonesia");
   Calendar calendar = new GregorianCalendar(2020, 4, 2);
   DatabaseSeller.addSeller(new Seller(DatabaseSeller.getLastId()+1, "Sulaiman Ivan Achmadi", "ivan.achmadi@gmail.com", "+62818970818", location1));
+  DatabaseSeller.addSeller(new Seller(DatabaseSeller.getLastId()+1, "Sulaiman Ivan Achmadi", "ivan.achmadi@gmail.com", "+62818970818", location1));
+  DatabaseSeller.addSeller(new Seller(DatabaseSeller.getLastId()+1, "Fadel", "fadel@gmail.com", "+62812345678", location1));
 
   try
   {
-   DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId()+1, "Ivan", "ivan@gmail.com", "Password1", calendar));
-   DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId()+1, "Ivan", "ivan@gmail.com", "Password2", 2020, 4,2));
    DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId()+1, "Fadel", "fadel@gmail.com", "Password3"));
    DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId()+1, "Fadel", "ledaf@gmail.com", "Password4"));
+   DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId()+1, "Ivan", "ivan@gmail.com", "Password1", calendar));
+   DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId()+1, "Ivan", "ivan@gmail.com", "Password2", 2020, 4,2));
   } catch (EmailAlreadyExistsException e)
   {
    System.err.println(e.getMessage());
@@ -77,41 +78,61 @@ public class JFood
    System.err.println(f.getMessage());
   }
 
+  try {
+   DatabaseInvoice.removeInvoice(100);
+  } catch (InvoiceNotFoundException i){
+   System.err.println(i.getMessage());
+  }
+
+  /*
   System.out.println("=====DATABASE PROMO=====");
 
   for(Promo promo : DatabasePromo.getPromoDatabase()){
    System.out.println(promo.toString());
   }
+  */
 
   ArrayList<Food> food1 = new ArrayList<Food>();
-  ArrayList<Food> food2 = new ArrayList<Food>();
-  ArrayList<Food> food3 = new ArrayList<Food>();
 
   try
   {
    food1.add(DatabaseFood.getFoodById(1));
-   food2.add(DatabaseFood.getFoodById(2));
-   food3.add(DatabaseFood.getFoodById(3));
+   food1.add(DatabaseFood.getFoodById(2));
   }
   catch (FoodNotFoundException f)
   {
-
+   System.err.println(f.getMessage());
   }
 
   try
   {
    DatabaseInvoice.addInvoice(new CashInvoice(DatabaseInvoice.getLastId() + 1, food1, DatabaseCustomer.getCustomerById(1), 10000));
-   DatabaseInvoice.addInvoice(new CashInvoice(DatabaseInvoice.getLastId() + 1, food2, DatabaseCustomer.getCustomerById(2), 10000));
-   DatabaseInvoice.addInvoice(new CashlessInvoice(DatabaseInvoice.getLastId() + 1, food3, DatabaseCustomer.getCustomerById(3)));
+   DatabaseInvoice.addInvoice(new CashInvoice(DatabaseInvoice.getLastId() + 1, food1, DatabaseCustomer.getCustomerById(2), 10000));
   }
-  catch (CustomerNotFoundException c)
+  catch (CustomerNotFoundException | OngoingInvoiceAlreadyExistsException c)
   {
-
+   System.err.println(c.getMessage());
   }
 
-  for(Invoice invoice: DatabaseInvoice.getInvoiceDatabase()){
-   Thread calculate = new Thread(new PriceCalculator(invoice));
-   calculate.start();
+  for(Invoice invoices : DatabaseInvoice.getInvoiceDatabase())
+  {
+   new Thread(new PriceCalculator(invoices)).start();
+  }
+
+  System.out.println("\n=========ISI DATABASE CUSTOMER==========");
+  for(Customer customer : DatabaseCustomer.getCustomerDatabase()) {
+   System.out.println(customer);
+   System.out.println();
+  }
+  System.out.println("=========ISI DATABASE PROMO==========");
+  for(Promo promo : DatabasePromo.getPromoDatabase()) {
+   System.out.println(promo);
+   System.out.println();
+  }
+  System.out.println("=========ISI DATABASE FOOD==========");
+  for(Food food : DatabaseFood.getFoodDatabase()) {
+   System.out.println(food);
+   System.out.println();
   }
 
   /*

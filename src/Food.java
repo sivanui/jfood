@@ -67,7 +67,7 @@ public class Food//Create the class Food
   }
   public String toString()
     {
-        return id+""+name+""+seller.getName()+""+seller.getLocation().getCity()+""+price+""+category;
+        return "ID: "+id+"\nName : "+name+"\nSeller: "+seller.getName()+"\nCity: "+seller.getLocation().getCity()+"\nPrice: "+price+"\nCategory: "+category;
     }
   //public void printData()
   //{
