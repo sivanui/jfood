@@ -16,7 +16,6 @@ public class DatabaseCustomer //Create the class DatabaseCustomer
     //private static String[] listCustomer;
     private static ArrayList<Customer> CUSTOMER_DATABASE =  new ArrayList<Customer>();
     private static int lastId = 0;
-
     public static ArrayList<Customer> getCustomerDatabase()
     {
         return CUSTOMER_DATABASE;
@@ -25,7 +24,6 @@ public class DatabaseCustomer //Create the class DatabaseCustomer
     {
         return lastId;
     }
-
     public static Customer getCustomerById(int id) throws CustomerNotFoundException {
 
         for (Customer customer : CUSTOMER_DATABASE) {
@@ -35,7 +33,6 @@ public class DatabaseCustomer //Create the class DatabaseCustomer
         }
         throw new CustomerNotFoundException(id);
     }
-
     public static boolean addCustomer(Customer customer) throws EmailAlreadyExistsException
     {
         for(Customer customers : CUSTOMER_DATABASE){
@@ -47,7 +44,6 @@ public class DatabaseCustomer //Create the class DatabaseCustomer
         lastId = customer.getId();
         return true;
     }
-
     public static boolean removeCustomer(int id) throws CustomerNotFoundException
     {
         for(int i = 0; i < CUSTOMER_DATABASE.size(); i++){
@@ -59,5 +55,14 @@ public class DatabaseCustomer //Create the class DatabaseCustomer
         }
         throw new CustomerNotFoundException(id);
     }
-
+    public static Customer getCustomerLogin(String email, String password)
+    {
+        for(Customer customer : CUSTOMER_DATABASE){
+            if (customer.getEmail().equals(customer.getEmail()) && customer.getPassword().equals(customer.getPassword()))
+            {
+                return customer;
+            }
+        }
+        return null;
+    }
 }

@@ -21,6 +21,7 @@ public class Seller //Create the class Seller
   {
       this.id = id;
       this.name = name;
+      this.email = email;
       this.phoneNumber = phoneNumber;
       this.location = location;
   }
