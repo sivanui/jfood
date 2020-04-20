@@ -30,8 +30,8 @@ public class InvoiceController {
     public Invoice changeInvoiceStatus(@PathVariable int id,
                                        @RequestParam(value = "invoiceStatus") InvoiceStatus status)
     {
-        boolean cek = DatabaseInvoice.changeInvoiceStatus(id, status);
-        if(cek) {
+        boolean check = DatabaseInvoice.changeInvoiceStatus(id, status);
+        if(check) {
             try {
                 return DatabaseInvoice.getInvoiceById(id);
             } catch (InvoiceNotFoundException e) {
@@ -53,10 +53,9 @@ public class InvoiceController {
     }
 
     @RequestMapping(value = "/createCashInvoice", method = RequestMethod.POST)
-    public Invoice addCashInvoice(@RequestParam(value="name") String name,
-                                  @RequestParam(value="foodIdList") ArrayList<Integer> foodIdList,
+    public Invoice addCashInvoice(@RequestParam(value="foodIdList") ArrayList<Integer> foodIdList,
                                   @RequestParam(value="customerId") int customerId,
-                                  @RequestParam(value="deliveryFee") int deliveryFee)
+                                  @RequestParam(value="deliveryFee", required = false) int deliveryFee)
     {
         ArrayList<Food> foods = new ArrayList<>();
         for (int food : foodIdList) {
@@ -67,9 +66,9 @@ public class InvoiceController {
             }
         }
         try {
-            Invoice invoice = new CashInvoice(DatabaseInvoice.getLastId()+1, foods,
-                    DatabaseCustomer.getCustomerById(customerId), deliveryFee);
+            Invoice invoice = new CashInvoice(DatabaseInvoice.getLastId()+1, foods, DatabaseCustomer.getCustomerById(customerId), deliveryFee);
             DatabaseInvoice.addInvoice(invoice);
+            invoice.setTotalPrice();
             return invoice;
         } catch (CustomerNotFoundException | OngoingInvoiceAlreadyExistsException e) {
             System.out.println(e.getMessage());
@@ -78,10 +77,9 @@ public class InvoiceController {
     }
 
     @RequestMapping(value = "/createCashlessInvoice", method = RequestMethod.POST)
-    public Invoice addCashlessInvoice(@RequestParam(value="name") String name,
-                                  @RequestParam(value="foodIdList") ArrayList<Integer> foodIdList,
-                                  @RequestParam(value="customerId") int customerId,
-                                  @RequestParam(value="promoCode") String promoCode)
+    public Invoice addCashlessInvoice(@RequestParam(value="foodIdList") ArrayList<Integer> foodIdList,
+                                      @RequestParam(value="customerId") int customerId,
+                                      @RequestParam(value="promoCode", required = false) String promoCode)
     {
         ArrayList<Food> foods = new ArrayList<>();
         for (int food : foodIdList) {
@@ -92,9 +90,10 @@ public class InvoiceController {
             }
         }
         try {
-            Invoice invoice = new CashlessInvoice(DatabaseInvoice.getLastId()+1, foods,
-                    DatabaseCustomer.getCustomerById(customerId), DatabasePromo.getPromoByCode(promoCode));
+            Invoice invoice = new CashlessInvoice(DatabaseInvoice.getLastId() + 1, foods, DatabaseCustomer.getCustomerById(customerId), DatabasePromo.getPromoByCode(promoCode));
+            new CashlessInvoice(DatabaseInvoice.getLastId() + 1, foods, DatabaseCustomer.getCustomerById(customerId));
             DatabaseInvoice.addInvoice(invoice);
+            invoice.setTotalPrice();
             return invoice;
         } catch (CustomerNotFoundException | OngoingInvoiceAlreadyExistsException e) {
             System.out.println(e.getMessage());

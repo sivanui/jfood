@@ -36,7 +36,7 @@ public class DatabaseInvoice {
         ArrayList<Invoice> invoiceList = new ArrayList<>();
         for(Invoice invoice : INVOICE_DATABASE)
         {
-            if(invoice.getCustomer().equals(customerId)){
+            if(invoice.getCustomer().getId() == customerId){
                 invoiceList.add(invoice);
             }
         }
@@ -46,8 +46,8 @@ public class DatabaseInvoice {
     public static boolean addInvoice(Invoice invoice) throws OngoingInvoiceAlreadyExistsException
     {
         int customerId = invoice.getCustomer().getId();
-        for (Invoice _invoice : INVOICE_DATABASE) {
-            if (_invoice.getCustomer().getId() == customerId && _invoice.getInvoiceStatus() == InvoiceStatus.ONGOING){
+        for (Invoice invoiceAdd : INVOICE_DATABASE) {
+            if (invoiceAdd.getCustomer().getId() == customerId && invoiceAdd.getInvoiceStatus() == InvoiceStatus.ONGOING){
                 throw new OngoingInvoiceAlreadyExistsException(invoice);
             }
         }
