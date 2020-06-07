@@ -30,7 +30,7 @@ import java.util.ArrayList;
      this.foods = foods;
      this.date=Calendar.getInstance();
      this.customer = customer;
-     this.invoiceStatus = InvoiceStatus.ONGOING;
+     this.invoiceStatus = InvoiceStatus.Ongoing;
   }
   public int getId()
   {

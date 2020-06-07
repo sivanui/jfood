@@ -7,9 +7,10 @@ package ivan.jfood;
  */
 public enum InvoiceStatus
 {
-    ONGOING("Ongoing"),
-    FINISHED("Finished"),
-    CANCELLED("Cancelled");
+    Ongoing("Ongoing"),
+    Finished("Finished"),
+    Cancelled("Cancelled"),
+    Hold("Hold");
     
     private String status;
     private InvoiceStatus(String status)

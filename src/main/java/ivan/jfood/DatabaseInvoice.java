@@ -47,7 +47,7 @@ public class DatabaseInvoice {
     {
         int customerId = invoice.getCustomer().getId();
         for (Invoice invoiceAdd : INVOICE_DATABASE) {
-            if (invoiceAdd.getCustomer().getId() == customerId && invoiceAdd.getInvoiceStatus() == InvoiceStatus.ONGOING){
+            if (invoiceAdd.getCustomer().getId() == customerId && invoiceAdd.getInvoiceStatus() == InvoiceStatus.Ongoing){
                 throw new OngoingInvoiceAlreadyExistsException(invoice);
             }
         }
@@ -59,7 +59,7 @@ public class DatabaseInvoice {
     public static boolean changeInvoiceStatus(int id, InvoiceStatus invoiceStatus)
     {
         for(Invoice invoice : INVOICE_DATABASE) {
-            if(invoice.getId() == id && invoice.getInvoiceStatus().equals(InvoiceStatus.ONGOING)) {
+            if(invoice.getId() == id && invoice.getInvoiceStatus().equals(InvoiceStatus.Ongoing)) {
                 invoice.setInvoiceStatus(invoiceStatus);
                 return true;
             }

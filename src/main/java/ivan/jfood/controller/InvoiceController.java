@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RequestMapping("/invoice")
+@CrossOrigin(origins = "*", allowedHeaders = "")
 @RestController
 public class InvoiceController {
 
@@ -66,11 +67,11 @@ public class InvoiceController {
             }
         }
         try {
-            Invoice invoice = new CashInvoice(DatabaseInvoice.getLastId()+1, foods, DatabaseCustomer.getCustomerById(customerId), deliveryFee);
+            Invoice invoice = new CashInvoice(DatabaseInvoice.getLastId()+1, foods, DatabaseCustomerPostgre.getCustomer(customerId), deliveryFee);
             DatabaseInvoice.addInvoice(invoice);
             invoice.setTotalPrice();
             return invoice;
-        } catch (CustomerNotFoundException | OngoingInvoiceAlreadyExistsException e) {
+        } catch (OngoingInvoiceAlreadyExistsException e) {
             System.out.println(e.getMessage());
             return null;
         }
@@ -90,12 +91,12 @@ public class InvoiceController {
             }
         }
         try {
-            Invoice invoice = new CashlessInvoice(DatabaseInvoice.getLastId() + 1, foods, DatabaseCustomer.getCustomerById(customerId), DatabasePromo.getPromoByCode(promoCode));
-            new CashlessInvoice(DatabaseInvoice.getLastId() + 1, foods, DatabaseCustomer.getCustomerById(customerId));
+            Invoice invoice = new CashlessInvoice(DatabaseInvoice.getLastId() + 1, foods, DatabaseCustomerPostgre.getCustomer(customerId), DatabasePromo.getPromoByCode(promoCode));
+            new CashlessInvoice(DatabaseInvoice.getLastId() + 1, foods, DatabaseCustomerPostgre.getCustomer(customerId));
             DatabaseInvoice.addInvoice(invoice);
             invoice.setTotalPrice();
             return invoice;
-        } catch (CustomerNotFoundException | OngoingInvoiceAlreadyExistsException e) {
+        } catch (OngoingInvoiceAlreadyExistsException e) {
             System.out.println(e.getMessage());
             return null;
         }
