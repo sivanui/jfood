@@ -4,7 +4,7 @@ package ivan.jfood;
  * Class Customer terdiri dari atribut id, name, email, password, joinDate
  *
  * @author  Sulaiman Ivan Achmadi
- * @version 20-03-2020
+ * @version 06-07-2020
  */
 
 import java.util.*;
@@ -22,6 +22,11 @@ public class Customer
 
     /**
      * Constructor for objects of class Customer
+     * @param id customer's id
+     * @param name customer's name
+     * @param email customer's email
+     * @param password customer's password
+     * @param joinDate customer's join date
      */
     public Customer(int id, String name, String email, String password, Calendar joinDate)
     {
@@ -33,6 +38,16 @@ public class Customer
         setPassword(password);
     }
 
+    /**
+     * Constructor for objects of class Customer
+     * @param id customer's id
+     * @param name customer's name
+     * @param email customer's email
+     * @param password customer's password
+     * @param year year
+     * @param month month
+     * @param dayOfMonth day
+     */
     public Customer(int id, String name, String email, String password, int year, int month, int dayOfMonth)
     {
 
@@ -44,6 +59,13 @@ public class Customer
         setPassword(password);
     }
 
+    /**
+     * Constructor for objects of class Customer
+     * @param id customer's id
+     * @param name customer's name
+     * @param email customer's email
+     * @param password customer's password
+     */
     public Customer(int id, String name, String email, String password)
     {
         this.id = id;
@@ -57,8 +79,9 @@ public class Customer
     /**
      * An example of a method - replace this comment with your own
      *
-     * param y a sample parameter for a method
-     * return    the sum of x and y
+     * @return    the sum of x and y
+     * Get id
+     * @return id
      */
     public int getId()
     {
@@ -66,36 +89,64 @@ public class Customer
         return id;
     }
 
+    /**
+     * Get name
+     * @return name
+     */
     public String getName()
     {
         return name;
     }
 
+    /**
+     * Get email
+     * @return email
+     */
     public String getEmail()
     {
         return email;
     }
 
+    /**
+     * Get password
+     * @return password
+     */
     public String getPassword()
     {
         return password;
     }
 
+    /**
+     * Get calendar
+     * @return joinDate
+     */
     public Calendar getJoinDate()
     {
         return joinDate;
     }
 
+    /**
+     * Set id
+     * @param id id
+     */
     public void setId(int id)
     {
         this.id = id;
     }
 
+    /**
+     * Set name
+     * @param name name
+     */
     public void setName(String name)
     {
         this.name = name;
     }
 
+    /**
+     * Set email
+     * @param email email
+     */
     public void setEmail(String email)
     {
         String regex = "^([\\w\\&\\*_~]+\\.{0,1})+@[\\w][\\w\\-]*(\\.[\\w\\-]+)+$";
@@ -107,6 +158,10 @@ public class Customer
         }
     }
 
+    /**
+     * Set password
+     * @param password password
+     */
     public void setPassword(String password)
     {
         String regex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$";
@@ -118,16 +173,29 @@ public class Customer
         }
     }
 
+    /**
+     * Set joinDate
+     * @param joinDate joinDate
+     */
     public void setJoinDate(GregorianCalendar joinDate)
     {
         this.joinDate = joinDate;
     }
 
+    /**
+     * Set joinDate
+     * @param year year
+     * @param month month
+     * @param dayOfMonth day
+     */
     public void setJoinDate(int year, int month, int dayOfMonth)
     {
         this.joinDate.set(year, month-1, dayOfMonth);
     }
 
+    /**
+     * Method toString
+     */
     public String toString()
     {
         if(joinDate != null){

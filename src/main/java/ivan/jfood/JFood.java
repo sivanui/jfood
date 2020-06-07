@@ -7,6 +7,12 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 @SpringBootApplication
+
+/**
+ * class JFood
+ * @author Sulaiman Ivan Achmadi
+ * @version 6/7/2020
+ */
 public class JFood {
  public static void main(String[] args) throws SellerNotFoundException, FoodNotFoundException, PromoCodeAlreadyExistsException
  {

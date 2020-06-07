@@ -1,9 +1,9 @@
 package ivan.jfood;
 /**
- * Enumeration class PaymentType - write a description of the enum class here
+ * Enumeration class PaymentType
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author Sulaiman Ivan Achmadi
+ * @version 06/07/2020
  */
 public enum PaymentType
 {
@@ -11,10 +11,19 @@ public enum PaymentType
     CASH("Cash");
     
     private String paymentType;
+
+    /**
+     * Constructor for objects of class PaymentType
+     * @param paymentType payment type
+     */
     private PaymentType(String paymentType)
     {
         this.paymentType = paymentType;
     }
+
+    /**
+     * Method toString
+     */
     public String toString()
     {
         return this.paymentType;

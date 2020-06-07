@@ -1,9 +1,9 @@
 package ivan.jfood;
 /**
- * Enumeration class InvoiceStatus - write a description of the enum class here
+ * Enumeration class InvoiceStatus
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author Sulaiman Ivan Acmadi
+ * @version 06/07/2020
  */
 public enum InvoiceStatus
 {
@@ -13,10 +13,19 @@ public enum InvoiceStatus
     Hold("Hold");
     
     private String status;
+
+    /**
+     * Constructor for objects of class InvoiceStatus
+     * @param status status
+     */
     private InvoiceStatus(String status)
     {
         this.status = status;
     }
+
+    /**
+     * Method toString
+     */
     public String toString()
     {
         return this.status;

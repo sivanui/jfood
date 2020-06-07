@@ -2,6 +2,11 @@ package ivan.jfood;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * class DatabaseConnectionPostgre
+ * @author Sulaiman Ivan Achmadi
+ * @version 6/7/2020
+ */
 public class DatabaseConnectionPostgre
 {
     protected static Connection connection()

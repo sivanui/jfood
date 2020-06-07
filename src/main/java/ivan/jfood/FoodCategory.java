@@ -1,9 +1,9 @@
 package ivan.jfood;
 /**
- * Enumeration class FoodCategory - write a description of the enum class here
+ * Enumeration class FoodCategory
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author Sulaiman Ivan Achmadi
+ * @version 06/07/20
  */
 public enum FoodCategory
 {
@@ -17,10 +17,19 @@ public enum FoodCategory
     JAPANESE("Japanese");
     
     private String category;
+
+    /**
+     * Constructor for objects of class FoodCategory
+     * @param category food category
+     */
     FoodCategory(String category)
     {
         this.category=category;
     }
+
+    /**
+     * Method toString
+     */
     public String toString()
     {
         return this.category;

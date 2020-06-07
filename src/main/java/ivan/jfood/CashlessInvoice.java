@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * This is class CashlessInvoice.
  *
  * @author Sulaiman Ivan Achmadi
- * @version 12/3/20
+ * @version 6/7/20
  */
 
 public class CashlessInvoice extends Invoice
@@ -20,28 +20,55 @@ public class CashlessInvoice extends Invoice
    */
  private static final PaymentType PAYMENT_TYPE = PaymentType.CASHLESS;
  private Promo promo;
-
+    /**
+     * Constructor for objects of class CashlessInvoice
+     * @param id id
+     * @param foods foods
+     * @param customer customer
+     */
  public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer)
  {
      super(id, foods, customer);
  }
+    /**
+     * Constructor for objects of class CashlessInvoice
+     * @param id id
+     * @param foods foods
+     * @param customer customer
+     * @param promo promo
+     */
  public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer,  Promo promo)
  {
      super(id, foods, customer);
      this.promo = promo;
  }
+    /**
+     * Get payment type
+     * @return PAYMENT_TYPE
+     */
  public PaymentType getPaymentType()
  {
      return PAYMENT_TYPE;
  }
+    /**
+     * Get promo
+     * @return promo
+     */
  public Promo getPromo()
  {
      return promo;
  }
+    /**
+     * Set promo
+     * @param  promo promo
+     */
  public void setPromo(Promo promo)
  {
      this.promo = promo;
  }
+    /**
+     * Set total price
+     */
  public void setTotalPrice(){
      super.totalPrice=0;
      for(Food listFood : getFoods())
@@ -52,6 +79,9 @@ public class CashlessInvoice extends Invoice
          super.totalPrice = super.totalPrice - promo.getDiscount();
      }
  }
+    /**
+     * Method toString
+     */
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
         String foods = "";

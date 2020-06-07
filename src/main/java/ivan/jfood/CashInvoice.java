@@ -1,9 +1,9 @@
 package ivan.jfood;
 /**
- * Write a description of class CashInvoice here.
+ * This is a description of the class CashInvoice.
  *
  * @author Sulaiman Ivan Achmadi
- * @version 2/4/20
+ * @version 6/7/20
  */
 
 import java.util.ArrayList;
@@ -21,30 +21,54 @@ public class CashInvoice extends Invoice {
 
     /**
      * Constructor for objects of class CashInvoice
+     * @param id id
+     * @param customer customer
+     * @param foods foods
      */
     public CashInvoice(int id, ArrayList<Food> foods, Customer customer) {
         // initialise instance variables
         super(id, foods, customer);
     }
 
+    /**
+     * Constructor for objects of class CashInvoice
+     * @param id id
+     * @param customer customer
+     * @param foods foods
+     * @param deliveryFee delivery fee
+     */
     public CashInvoice(int id, ArrayList<Food> foods, Customer customer, int deliveryFee) {
         // initialise instance variables
         super(id, foods, customer);
         this.deliveryFee = deliveryFee;
     }
-
+    /**
+     * Get payment type
+     * @return PAYMENT_TYPE
+     */
     public PaymentType getPaymentType() {
         return PAYMENT_TYPE;
     }
 
+    /**
+     * Get delivery fee
+     * @return deliveryFee
+     */
     public int getDeliveryFee() {
         return deliveryFee;
     }
 
+    /**
+     * Set delivery fee
+     * @param deliveryFee delivery fee
+     */
     public void setDeliveryFee(int deliveryFee) {
         this.deliveryFee = deliveryFee;
     }
 
+    /**
+     * Set total price
+     */
     public void setTotalPrice() {
         super.totalPrice = 0;
         for (Food foodList : getFoods()) {
@@ -53,6 +77,9 @@ public class CashInvoice extends Invoice {
         super.totalPrice = super.totalPrice + deliveryFee;
     }
 
+    /**
+     * Method toString
+     */
     public String toString() {
         StringBuilder foodName = new StringBuilder();
         for (Food food : getFoods()) {

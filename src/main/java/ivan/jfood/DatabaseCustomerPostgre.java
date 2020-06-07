@@ -2,9 +2,19 @@ package ivan.jfood;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * class DatabaseCustomerPostgre
+ * @author Sulaiman Ivan Achmadi
+ * @version 6/7/2020
+ */
 public class DatabaseCustomerPostgre extends DatabaseConnectionPostgre
 {
     private static ArrayList<Customer> CUSTOMER_DATABASE = new ArrayList<Customer>();
+
+    /**
+     * Get customer database
+     * @return CUSTOMER_DATABASE
+     */
     public static ArrayList<Customer> getDatabaseCustomer()
     {
         Connection connection = connection();
@@ -36,6 +46,14 @@ public class DatabaseCustomerPostgre extends DatabaseConnectionPostgre
         }
         return CUSTOMER_DATABASE;
     }
+
+    /**
+     * Insert customer
+     * @param name name
+     * @param email email
+     * @param password password
+     * @return customer
+     */
     public static Customer insertCustomer(String name, String email, String password)
     {
         Connection connection = connection();
@@ -64,6 +82,11 @@ public class DatabaseCustomerPostgre extends DatabaseConnectionPostgre
         }
         return customer;
     }
+
+    /**
+     * Get last customer
+     * @return customer
+     */
     public static int getLastCustomerId()
     {
         Connection connection = connection();
@@ -87,6 +110,12 @@ public class DatabaseCustomerPostgre extends DatabaseConnectionPostgre
         }
         return id;
     }
+
+    /**
+     * Get customer by id
+     * @param id_cust customer id
+     * @return customer
+     */
     public static Customer getCustomer(int id_cust)
     {
         Connection connection = connection();
@@ -118,6 +147,13 @@ public class DatabaseCustomerPostgre extends DatabaseConnectionPostgre
         }
         return customer;
     }
+
+    /**
+     * Get customer
+     * @param email_cust customer emial
+     * @param password_cust customer password
+     * @return customer
+     */
     public static Customer getCustomer(String email_cust, String password_cust)
     {
         Connection connection = connection();
@@ -151,6 +187,12 @@ public class DatabaseCustomerPostgre extends DatabaseConnectionPostgre
         }
         return customer;
     }
+
+    /**
+     * Remove customer boolean.
+     * @param id the id
+     * @return the boolean
+     */
     public static boolean removeCustomer(int id)
     {
         Connection connection = connection();

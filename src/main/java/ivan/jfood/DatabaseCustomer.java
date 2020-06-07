@@ -8,22 +8,40 @@ import java.util.ArrayList;
  * This is class DatabaseCustomer.
  *
  * @author Sulaiman Ivan Achmadi
- * @version 5/3/20
+ * @version 6/7/20
  */
 public class DatabaseCustomer //Create the class DatabaseCustomer
 {
     // instance variables - replace the example below with your own
     //private static String[] listCustomer;
+
     private static ArrayList<Customer> CUSTOMER_DATABASE =  new ArrayList<Customer>();
     private static int lastId = 0;
+
+    /**
+     * Get customer database
+     * @return CUSTOMER_DATABASE
+     */
     public static ArrayList<Customer> getCustomerDatabase()
     {
         return CUSTOMER_DATABASE;
     }
+
+    /**
+     * Get last id
+     * @return lastId
+     */
     public static int getLastId()
     {
         return lastId;
     }
+
+    /**
+     * Get customer by id.
+     * @param id the id
+     * @return customer
+     * @throws CustomerNotFoundException the customer not found exception
+     */
     public static Customer getCustomerById(int id) throws CustomerNotFoundException {
 
         for (Customer customer : CUSTOMER_DATABASE) {
@@ -33,6 +51,13 @@ public class DatabaseCustomer //Create the class DatabaseCustomer
         }
         throw new CustomerNotFoundException(id);
     }
+
+    /**
+     * Add customer boolean.
+     * @param customer the id
+     * @return the boolean
+     * @throws EmailAlreadyExistsException the customer not found exception
+     */
     public static boolean addCustomer(Customer customer) throws EmailAlreadyExistsException
     {
         for(Customer customers : CUSTOMER_DATABASE){
@@ -44,6 +69,13 @@ public class DatabaseCustomer //Create the class DatabaseCustomer
         lastId = customer.getId();
         return true;
     }
+
+    /**
+     * Remove customer boolean.
+     * @param id the id
+     * @return the boolean
+     * @throws CustomerNotFoundException the customer not found exception
+     */
     public static boolean removeCustomer(int id) throws CustomerNotFoundException
     {
         for(int i = 0; i < CUSTOMER_DATABASE.size(); i++){
@@ -55,6 +87,13 @@ public class DatabaseCustomer //Create the class DatabaseCustomer
         }
         throw new CustomerNotFoundException(id);
     }
+
+    /**
+     * Get customer login.
+     * @param email email
+     * @param password password
+     * @return customer
+     */
     public static Customer getCustomerLogin(String email, String password)
     {
         for(Customer customer : CUSTOMER_DATABASE){
